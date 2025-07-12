@@ -1,3 +1,6 @@
+# learn-ai-from-scratch
+An easy-to-follow AI learning repo made for students and beginners who want to get into machine learning.
+
 
 # 🧠 Sentiment Classifier API (BERT + FastAPI)
 
@@ -135,3 +138,4 @@ Built with ❤️ by [Vinay](https://github.com/vinay-k8s) using:
 ## 📜 License
 
 MIT
+=======
