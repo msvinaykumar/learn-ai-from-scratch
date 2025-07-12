@@ -128,7 +128,7 @@ Worst experience ever,0
 
 ## ✨ Credits
 
-Built with ❤️ by [Vinay](https://github.com/vinay-k8s) using:
+Built with ❤️ by using:
 - Hugging Face 🤗
 - PyTorch 🔥
 - FastAPI ⚡
