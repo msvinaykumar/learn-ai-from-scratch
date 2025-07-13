@@ -1,141 +1,82 @@
 # learn-ai-from-scratch
 An easy-to-follow AI learning repo made for students and beginners who want to get into machine learning.
-
-
-# 🧠 Sentiment Classifier API (BERT + FastAPI)
-
-A minimal machine learning application that:
-- Trains a BERT model from labeled CSV (`sentiment_data.csv`)
-- Exposes a FastAPI endpoint for real-time sentiment prediction
-- Allows users to give feedback (Right/Wrong)
-- Retrains the model when feedback indicates an incorrect prediction
+Welcome to the AI/ML project workspace! This repository contains sub-projects that demonstrate building real-world machine learning systems from scratch.  
+Here we highlight one of the core projects: **Sentiment Classification with BERT**.
 
 ---
 
-## 📦 Tech Stack
+## 🧠 Project: Sentiment Classifier (BERT + FastAPI)
 
-- 🤗 Transformers (BERT base)
-- 🧠 PyTorch
-- 🚀 FastAPI
-- 🐼 Pandas
+### 🔍 Overview
 
----
+The **SentimentPrediction** project is a beginner-friendly, production-style implementation of a sentiment classification system.  
+It walks you through building a model that can classify text (like review comments etc.) as **Positive** or **Negative**, using the powerful **BERT** language model.
 
-## 📁 Project Structure
-
-```
-sentiment_app/
-├── app.py               # FastAPI app for prediction & feedback
-├── train.py             # Script to train and save the model
-├── model_utils.py       # Utility to load model & predict
-├── sentiment_data.csv   # CSV file with labeled training data
-├── requirements.txt     # Python dependencies
-└── README.md            # You're here!
-```
+This is **not just a pre-trained model use case** — we actually fine-tune the BERT model from scratch on a small CSV dataset.
 
 ---
 
-## 🚀 Quick Start
+### ⚙️ What You’ll Learn
 
-### 1. Clone the project and install dependencies
-
-```bash
-git clone <repo_url>
-cd sentiment_app
-pip install -r requirements.txt
-```
-
-### 2. Train the model (using provided CSV)
-
-```bash
-python train.py
-```
-
-This:
-- Fine-tunes `bert-base-uncased` on `sentiment_data.csv`
-- Saves model and tokenizer to `./model/`
-
-### 3. Start the FastAPI server
-
-```bash
-uvicorn app:app --reload
-```
-
-API will run at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- How to train a BERT model using Hugging Face Transformers and PyTorch
+- How to prepare training data and tokenize inputs
+- How to serve the model via FastAPI for real-time inference
+- How to add user feedback to retrain and improve the model
+- How to automate re-training on incorrect predictions
 
 ---
 
-## 🎯 API Usage
+### 🧪 Model Training Details
 
-### 🔎 POST `/predict`
+| Parameter                  | Value               |
+|---------------------------|---------------------|
+| Model                     | `bert-base-uncased` |
+| Training Epochs           | 3                   |
+| Batch Size (per device)   | 8                   |
+| Save Strategy             | every epoch         |
+| Tokenizer Used            | BERT Tokenizer      |
+| Loss Function             | CrossEntropyLoss     |
+| Optimizer & LR            | AdamW, 5e-5 (default) |
+| Output Directory          | `./model/`          |
+| Feedback-based Retraining | ✅ Yes               |
 
-**Input:**
-```json
-{
-  "text": "I love this product"
-}
+---
+
+### 📂 Folder Structure
+
+```
+MainProject/
+├── SentimentPrediction/         # BERT Sentiment Classifier project
+│   ├── app.py                    # FastAPI server
+│   ├── train.py                  # Model training logic
+│   ├── predict_sentiment.py      # Predict function
+│   ├── sentiment_data.csv        # Training data
+│   ├── requirements.txt
+│   └── README.md                 # Hands-on setup
+├── README.md                     # ← You're here!
 ```
 
-**Response:**
-```json
-{
-  "prediction": "Positive",
-  "confidence": 0.92,
-  "feedback_links": {
-    "right": "http://127.0.0.1:8000/feedback/right?text=I%20love%20this%20product",
-    "wrong": "http://127.0.0.1:8000/feedback/wrong?text=I%20love%20this%20product&predicted_class=1"
-  }
-}
-```
+---
 
-### 🧠 GET `/feedback/wrong`
+## 🚀 Get Started with Sentiment Project
 
-- When user clicks this, the server:
-  - Infers correct label
-  - Appends feedback to `sentiment_data.csv`
-  - Retrains the model
+👉 **Hands-on guide here:** [SentimentPrediction/README.md](./SentimentPrediction/README.md)
 
-### 🧠 GET `/feedback/right`
-
-- Just logs positive feedback (no training)
+It will walk you through:
+- Installing dependencies
+- Training the model
+- Running FastAPI server
+- Testing prediction and feedback API
 
 ---
 
-## 🧪 Example CSV Format (`sentiment_data.csv`)
+## 📬 Contribution & Next Steps
 
-```csv
-text,label
-I love this movie,1
-I hate this product,0
-This is amazing,1
-Worst experience ever,0
-```
+Feel free to extend this project by:
+- Adding more classes (e.g., neutral sentiment)
+- Improving model with better preprocessing
+- Adding frontend with React/Streamlit
 
-- Label `1` = Positive  
-- Label `0` = Negative
+We welcome contributions! Let’s make learning AI/ML easier for everyone.
 
 ---
-
-## 🛠️ TODO / Enhancements
-
-- [ ] Async retraining in background
-- [ ] Add neutral class (multi-class classification)
-- [ ] Deploy via Docker
-- [ ] Streamlit or React UI for frontend
-- [ ] Batch feedback queue with scheduled training
-
----
-
-## ✨ Credits
-
-Built with ❤️ by using:
-- Hugging Face 🤗
-- PyTorch 🔥
-- FastAPI ⚡
-
----
-
-## 📜 License
-
-MIT
-=======
