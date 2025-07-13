@@ -14,6 +14,22 @@ It walks you through building a model that can classify text (like review commen
 
 This is **not just a pre-trained model use case** — we actually fine-tune the BERT model from scratch on a small CSV dataset.
 
+#### 🧠 Project Use Case
+The Sentiment Classifier project demonstrates how to build a real-world Natural Language Processing (NLP) system using BERT. The goal is to automatically determine whether a given text expresses a positive or negative sentiment.
+
+This system is ideal for:
+
+🛍️ E-commerce reviews – Understand customer feedback on products
+
+💬 Social media monitoring – Detect sentiment trends on Twitter, Reddit, etc.
+
+🧾 Customer support tickets – Prioritize negative queries automatically
+
+🎯 Feedback systems – Continuously improve predictions by learning from user responses (thumbs up/down)
+
+By combining model training, real-time inference via FastAPI, and feedback-driven retraining, this project gives a hands-on foundation for deploying and evolving AI models in production.
+
+
 ---
 
 ### ⚙️ What You’ll Learn
